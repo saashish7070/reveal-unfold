@@ -193,11 +193,18 @@ function Stats() {
   return (
     <div className="max-w-[1280px] mx-auto px-8 relative z-20">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-16 border-t border-white/5">
-        {items.map(([k, v]) => (
-          <div key={k} className="space-y-2">
+        {items.map(([k, v], index) => (
+          <motion.div
+            key={k}
+            initial={{ opacity: 0, x: index % 2 === 0 ? -60 : 60, y: 60 }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.08 }}
+            className="space-y-2"
+          >
             <p className={`${label} text-xs`}>{k}</p>
             <p className="text-lg font-semibold">{v}</p>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
@@ -231,17 +238,30 @@ function Work() {
 
 function ProjectRow({ project: p }: { project: Project }) {
   const [open, setOpen] = useState(false);
+  const imageFromRight = p.reverse;
   return (
     <div className="group">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-        <div className={`lg:col-span-7 ${p.reverse ? "order-1 lg:order-2" : ""} aspect-video overflow-hidden rounded-xl bg-surface-container border border-white/5`}>
+        <motion.div
+          className={`lg:col-span-7 ${p.reverse ? "order-1 lg:order-2" : ""} aspect-video overflow-hidden rounded-xl bg-surface-container border border-white/5`}
+          initial={{ opacity: 0, x: imageFromRight ? 80 : -80, y: 60 }}
+          whileInView={{ opacity: 1, x: 0, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.75, ease: "easeOut" }}
+        >
           <img
             src={p.image}
             alt={p.title}
             className="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
           />
-        </div>
-        <div className={`lg:col-span-5 ${p.reverse ? "order-2 lg:order-1" : ""} space-y-8`}>
+        </motion.div>
+        <motion.div
+          className={`lg:col-span-5 ${p.reverse ? "order-2 lg:order-1" : ""} space-y-8`}
+          initial={{ opacity: 0, x: imageFromRight ? -80 : 80, y: 60 }}
+          whileInView={{ opacity: 1, x: 0, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.75, ease: "easeOut", delay: 0.1 }}
+        >
           <div className="space-y-4">
             <span className="text-sm font-semibold text-on-surface-variant uppercase tracking-widest">
               {p.num}
