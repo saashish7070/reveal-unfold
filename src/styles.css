@@ -4,6 +4,33 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --color-background: #0b1326;
+  --color-foreground: #dae2fd;
+  --color-on-surface: #dae2fd;
+  --color-on-surface-variant: #c2c6d6;
+  --color-on-primary: #002e6a;
+  --color-primary: #adc6ff;
+  --color-tertiary: #4cd7f6;
+  --color-surface: #0b1326;
+  --color-surface-container: #131b2e;
+  --color-surface-container-low: #111827;
+  --color-surface-container-lowest: #060e20;
+  --color-surface-container-high: #1c2438;
+  --color-surface-container-highest: #2d3449;
+  --color-surface-variant: #171f33;
+  --color-outline: #424754;
+  --color-outline-variant: #2d3449;
+
+  --font-display: "Geist", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --spacing-gutter: 32px;
+  --spacing-section: 160px;
+
+  --container-max: 1280px;
+}
+
 /*
  * Design system definition.
  *
@@ -140,5 +167,18 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
   }
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #dae2fd 0%, #adc6ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-blur {
+  backdrop-filter: blur(24px);
+  background: rgba(11, 19, 38, 0.9);
 }
