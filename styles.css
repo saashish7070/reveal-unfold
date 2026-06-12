@@ -726,12 +726,23 @@ a {
 }
 
 /* Primary Links */
-a:not(.px-7):not([class*="rounded-full"]) {
+a:not(.px-7):not([class*="rounded-full"]):not(.bg-primary):not(.btn-secondary) {
   color: var(--on-surface);
 }
 
-a:not(.px-7):not([class*="rounded-full"]):hover {
+a:not(.px-7):not([class*="rounded-full"]):not(.bg-primary):not(.btn-secondary):hover {
   color: var(--primary);
+}
+
+/* Ensure button-style anchors always keep their own text color */
+a.bg-primary,
+a.bg-primary:hover {
+  color: var(--on-primary);
+}
+
+a.btn-secondary,
+a.btn-secondary:hover {
+  color: var(--on-surface);
 }
 
 /* Navigation Links */
