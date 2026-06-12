@@ -88,12 +88,12 @@ function renderProjects() {
               <h3 class="display text-3xl md:text-2xl leading-tight">${project.title}</h3>
               <p class="text-base text-on-surface-variant leading-relaxed">${project.blurb}</p>
             </div>
-            <div class="flex flex-wrap gap-3">
-              ${project.tags.map(tag => `<span class="text-xs font-semibold px-4 py-1.5 border border-white-10 rounded-full">${tag}</span>`).join('')}
+            <div class="flex flex-wrap gap-2">
+              ${project.tags.map(tag => `<span class="tag-chip">${tag}</span>`).join('')}
             </div>
-            <button class="toggle-deepdive inline-flex items-center gap-3 text-on-surface font-bold border-b border-white-20 pb-1 hover:border-white transition-all" data-index="${index}">
+            <button class="toggle-deepdive inline-flex items-center gap-2 text-on-surface" data-index="${index}">
               View Technical Deep-Dive
-              <span class="material-symbols-outlined text-base transition-transform duration-500">expand_more</span>
+              <span class="material-symbols-outlined transition-transform duration-500" style="font-size:1.125rem;">expand_more</span>
             </button>
           </div>
         </div>
@@ -136,7 +136,7 @@ function renderProjects() {
                 <span class="label text-xs">Tech Stack</span>
                 <div class="flex flex-wrap gap-2">
                   ${project.deepDive.stack.map(s => `
-                    <span class="text-xs font-semibold px-3 py-1.5 rounded-full bg-surface-container-high text-on-surface">${s}</span>
+                    <span class="stack-chip">${s}</span>
                   `).join('')}
                 </div>
               </div>

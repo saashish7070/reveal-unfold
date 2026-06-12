@@ -765,15 +765,16 @@ nav a:hover::after {
 nav .bg-white {
   background-color: var(--on-surface);
   color: var(--background);
-  padding: 0.625rem 1.75rem;
+  padding: 0.5rem 1.25rem;
   border-radius: 9999px;
   font-weight: 700;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.01em;
   cursor: pointer;
   position: relative;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.12);
   border: none;
   display: inline-flex;
   align-items: center;
@@ -853,17 +854,18 @@ button:active {
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  padding: 1.25rem 2.5rem;
+  padding: 0.875rem 2rem;
   border-radius: 9999px;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.9375rem;
+  letter-spacing: 0.005em;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
   white-space: nowrap;
 }
 
@@ -948,10 +950,44 @@ button.border:active {
   box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
 }
 
+/* Secondary / Ghost Button (hero Download CV) */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  border-radius: 9999px;
+  border: 1.5px solid var(--outline);
+  background-color: transparent;
+  color: var(--on-surface);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  letter-spacing: 0.005em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-secondary:hover {
+  border-color: var(--on-surface);
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.12);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
 /* Toggle Deep-dive Button */
 .toggle-deepdive {
   position: relative;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.4rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 .toggle-deepdive::after {
@@ -976,6 +1012,40 @@ button.border:active {
 
 .toggle-deepdive[aria-expanded="true"] .material-symbols-outlined {
   transform: rotate(180deg);
+}
+
+/* Tag chips (project tags) */
+.tag-chip {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.3125rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  color: var(--on-surface-variant);
+  white-space: nowrap;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.tag-chip:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--on-surface);
+}
+
+/* Tech stack chips (deep-dive) */
+.stack-chip {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.3125rem 0.75rem;
+  border-radius: 9999px;
+  background-color: var(--surface-container-high);
+  color: var(--on-surface);
 }
 
 /* Form Elements */
@@ -1163,16 +1233,17 @@ button[type="submit"],
 .w-full.bg-white {
   background-color: var(--on-surface);
   color: var(--background);
-  padding: 1.25rem 2.5rem;
+  padding: 1rem 2rem;
   border-radius: 9999px;
   font-weight: 700;
-  font-size: 1.125rem;
+  font-size: 0.9375rem;
+  letter-spacing: 0.01em;
   width: 100%;
   cursor: pointer;
   position: relative;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
   border: none;
 }
 
