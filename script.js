@@ -311,6 +311,58 @@ function setupMobileMenu() {
   });
 }
 
+// Typing animation
+function setupTypingAnimation() {
+  const el = document.getElementById("typing-word");
+  if (!el) return;
+
+  const words = ["intelligent", "purposeful", "impactful", "human-centered"];
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  const TYPING_SPEED   = 80;   // ms per character when typing
+  const DELETING_SPEED = 45;   // ms per character when deleting
+  const HOLD_DURATION  = 6000; // ms to hold the full word before deleting
+
+  function tick() {
+    const current = words[wordIndex];
+
+    if (!isDeleting) {
+      // Typing forward
+      el.textContent = current.slice(0, charIndex + 1);
+      charIndex++;
+
+      if (charIndex === current.length) {
+        // Word fully typed — pause before deleting
+        isDeleting = true;
+        setTimeout(tick, HOLD_DURATION);
+        return;
+      }
+      setTimeout(tick, TYPING_SPEED);
+    } else {
+      // Deleting
+      el.textContent = current.slice(0, charIndex - 1);
+      charIndex--;
+
+      if (charIndex === 0) {
+        // Word fully deleted — move to next word
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        setTimeout(tick, 300);
+        return;
+      }
+      setTimeout(tick, DELETING_SPEED);
+    }
+  }
+
+  // Start with the first word already visible, then cycle
+  el.textContent = words[0];
+  charIndex = words[0].length;
+  isDeleting = true;
+  setTimeout(tick, HOLD_DURATION);
+}
+
 // Initialize
 document.addEventListener("DOMContentLoaded", () => {
   renderProjects();
@@ -318,4 +370,5 @@ document.addEventListener("DOMContentLoaded", () => {
   setupScrollAnimations();
   setupFormHandler();
   setupMobileMenu();
+  setupTypingAnimation();
 });
