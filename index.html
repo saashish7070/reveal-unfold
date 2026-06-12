@@ -24,7 +24,7 @@
           <a href="#contact" class="text-on-surface-variant hover:text-on-surface font-medium transition-colors">Contact</a>
         </div>
         <div class="flex items-center gap-4">
-          <a href="#contact" class="px-7 py-2.5 rounded-full bg-white text-background font-bold text-sm hover:bg-primary transition-all">
+          <a href="#contact" class="hidden md:flex px-7 py-2.5 rounded-full bg-white text-background font-bold text-sm hover:bg-primary transition-all">
             Connect
           </a>
           <button id="menuToggle" class="md-hidden flex flex-col justify-center items-center gap-1.5 w-10 h-10" aria-label="Toggle menu">
@@ -41,6 +41,9 @@
           <a href="#work" class="mobile-nav-link" onclick="closeMobileMenu()">Work</a>
           <a href="#about" class="mobile-nav-link" onclick="closeMobileMenu()">About</a>
           <a href="#contact" class="mobile-nav-link" onclick="closeMobileMenu()">Contact</a>
+          <a href="#contact" onclick="closeMobileMenu()" style="display:inline-flex;align-items:center;justify-content:center;padding:0.875rem 2rem;background:white;color:black;border-radius:9999px;font-weight:700;font-size:0.9375rem;margin-top:0.5rem;">
+            Connect
+          </a>
         </div>
       </div>
     </nav>
