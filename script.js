@@ -317,50 +317,42 @@ function setupTypingAnimation() {
   if (!el) return;
 
   const words = ["intelligent", "purposeful", "impactful", "human-centered"];
-  let wordIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
+  let wordIdx  = 0;
+  let charCount = 0;   // number of characters currently displayed
+  let deleting  = false;
 
-  const TYPING_SPEED   = 80;   // ms per character when typing
-  const DELETING_SPEED = 45;   // ms per character when deleting
-  const HOLD_DURATION  = 5000; // ms to hold the full word before deleting
+  function step() {
+    const word = words[wordIdx];
 
-  function tick() {
-    const current = words[wordIndex];
+    if (deleting) {
+      charCount--;
+      el.textContent = word.slice(0, charCount);
 
-    if (!isDeleting) {
-      // Typing forward
-      el.textContent = current.slice(0, charIndex + 1);
-      charIndex++;
-
-      if (charIndex === current.length) {
-        // Word fully typed — pause before deleting
-        isDeleting = true;
-        setTimeout(tick, HOLD_DURATION);
-        return;
+      if (charCount === 0) {
+        deleting = false;
+        wordIdx = (wordIdx + 1) % words.length;
+        setTimeout(step, 400);       // short pause before typing next word
+      } else {
+        setTimeout(step, 50);        // delete speed: 50ms/char
       }
-      setTimeout(tick, TYPING_SPEED);
     } else {
-      // Deleting
-      el.textContent = current.slice(0, charIndex - 1);
-      charIndex--;
+      charCount++;
+      el.textContent = word.slice(0, charCount);
 
-      if (charIndex === 0) {
-        // Word fully deleted — move to next word
-        isDeleting = false;
-        wordIndex = (wordIndex + 1) % words.length;
-        setTimeout(tick, 300);
-        return;
+      if (charCount === word.length) {
+        deleting = true;
+        setTimeout(step, 5000);      // hold 5s at full word
+      } else {
+        setTimeout(step, 100);       // type speed: 100ms/char
       }
-      setTimeout(tick, DELETING_SPEED);
     }
   }
 
-  // Start with the first word already visible, then cycle
+  // Show first word immediately, start cycling after 5s
   el.textContent = words[0];
-  charIndex = words[0].length;
-  isDeleting = true;
-  setTimeout(tick, HOLD_DURATION);
+  charCount = words[0].length;
+  deleting  = true;
+  setTimeout(step, 5000);
 }
 
 // Initialize
