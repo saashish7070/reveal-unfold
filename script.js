@@ -252,18 +252,13 @@ function setupFormHandler() {
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<span class="material-symbols-outlined text-lg">hourglass_empty</span> Sending...';
 
-      const formData = {
-        name: form.querySelector('input[name="name"]').value,
-        email: form.querySelector('input[name="email"]').value,
-        inquiryType: form.querySelector('select[name="inquiryType"]').value,
-        message: form.querySelector('textarea[name="message"]').value
-      };
+      const formData = new FormData(form);
 
       try {
-        const response = await fetch('/submit', {
+        const response = await fetch('https://formspree.io/f/mrevyrzy', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
+          headers: { 'Accept': 'application/json' },
+          body: formData
         });
 
         if (response.ok) {
