@@ -261,22 +261,26 @@ function setupFormHandler() {
           body: formData
         });
 
+        const data = await response.json();
+
         if (response.ok) {
           submitBtn.innerHTML = '<span class="material-symbols-outlined text-lg">check_circle</span> Message Sent!';
           form.reset();
           setTimeout(() => {
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalText;
-          }, 2000);
+          }, 3000);
         } else {
-          throw new Error('Failed to send message');
+          const errorMsg = data.errors ? data.errors.map(e => e.message).join(', ') : 'Failed to send message';
+          throw new Error(errorMsg);
         }
       } catch (error) {
+        console.error('Form submission error:', error.message);
         submitBtn.innerHTML = '<span class="material-symbols-outlined text-lg">error</span> Error Sending';
-        submitBtn.disabled = false;
         setTimeout(() => {
+          submitBtn.disabled = false;
           submitBtn.innerHTML = originalText;
-        }, 2000);
+        }, 3000);
       }
     });
   }
