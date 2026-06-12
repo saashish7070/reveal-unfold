@@ -323,7 +323,7 @@ function setupTypingAnimation() {
 
   const TYPING_SPEED   = 80;   // ms per character when typing
   const DELETING_SPEED = 45;   // ms per character when deleting
-  const HOLD_DURATION  = 6000; // ms to hold the full word before deleting
+  const HOLD_DURATION  = 5000; // ms to hold the full word before deleting
 
   function tick() {
     const current = words[wordIndex];
