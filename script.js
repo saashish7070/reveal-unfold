@@ -286,10 +286,36 @@ function setupFormHandler() {
   }
 }
 
+// Mobile menu
+function closeMobileMenu() {
+  const menu = document.getElementById("mobileMenu");
+  const toggle = document.getElementById("menuToggle");
+  if (menu) menu.classList.remove("mobile-menu-open");
+  if (menu) menu.classList.add("mobile-menu-hidden");
+  if (toggle) toggle.classList.remove("menu-open");
+}
+
+function setupMobileMenu() {
+  const toggle = document.getElementById("menuToggle");
+  const menu = document.getElementById("mobileMenu");
+  if (!toggle || !menu) return;
+  toggle.addEventListener("click", () => {
+    const isOpen = menu.classList.contains("mobile-menu-open");
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      menu.classList.remove("mobile-menu-hidden");
+      menu.classList.add("mobile-menu-open");
+      toggle.classList.add("menu-open");
+    }
+  });
+}
+
 // Initialize
 document.addEventListener("DOMContentLoaded", () => {
   renderProjects();
   observeElements();
   setupScrollAnimations();
   setupFormHandler();
+  setupMobileMenu();
 });

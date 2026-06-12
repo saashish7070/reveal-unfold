@@ -1554,3 +1554,153 @@ button.bg-primary::before {
     display: none;
   }
 }
+
+/* ===================== */
+/* Mobile Hamburger Menu */
+/* ===================== */
+.md-hidden {
+  display: flex;
+}
+
+@media (min-width: 768px) {
+  .md-hidden {
+    display: none !important;
+  }
+}
+
+.menu-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--on-surface);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-open .menu-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.menu-open .menu-bar:nth-child(2) {
+  opacity: 0;
+}
+.menu-open .menu-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-menu-hidden {
+  display: none;
+}
+
+.mobile-menu-open {
+  display: block;
+  animation: fadeInUp 0.2s ease-out forwards;
+}
+
+.mobile-nav-link {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--on-surface-variant);
+  transition: color 0.2s ease;
+}
+
+.mobile-nav-link:hover {
+  color: var(--on-surface);
+}
+
+.gap-1\.5 {
+  gap: 0.375rem;
+}
+
+/* ==================== */
+/* Mobile Responsiveness */
+/* ==================== */
+@media (max-width: 767px) {
+  /* Reduce section vertical padding */
+  .py-40 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  /* Reduce hero internal spacing */
+  .space-y-24 > * + * {
+    margin-top: 2.5rem;
+  }
+
+  /* Reduce project spacing */
+  .space-y-40 > * + * {
+    margin-top: 3rem;
+  }
+
+  /* Reduce large gaps in grids */
+  .gap-32 {
+    gap: 2.5rem;
+  }
+
+  .gap-24 {
+    gap: 2rem;
+  }
+
+  /* Hero text */
+  .text-6xl {
+    font-size: 2.25rem;
+  }
+
+  .text-7xl {
+    font-size: 2.25rem;
+  }
+
+  .text-5xl {
+    font-size: 1.875rem;
+  }
+
+  /* Hero buttons — full width on mobile */
+  #home .flex-wrap {
+    flex-direction: column;
+  }
+
+  #home .flex-wrap a {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Navigation padding */
+  .px-8 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  /* About section grid gap */
+  #about .gap-32 {
+    gap: 2rem;
+  }
+
+  /* Contact section — reduce form padding */
+  #contact .p-8 {
+    padding: 1.5rem;
+  }
+
+  /* Work section header — stack on mobile */
+  #work .flex.justify-between.items-baseline {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  /* Stats grid — keep 2 cols but tighten */
+  .grid-cols-2 {
+    gap: 1.5rem;
+  }
+
+  /* Experience list — stack job title/date */
+  #experience-list .flex.justify-between {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  /* Footer links wrap */
+  footer .flex.gap-10 {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+}

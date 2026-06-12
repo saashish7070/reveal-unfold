@@ -23,9 +23,25 @@
           <a href="#about" class="text-on-surface-variant hover:text-on-surface font-medium transition-colors">About</a>
           <a href="#contact" class="text-on-surface-variant hover:text-on-surface font-medium transition-colors">Contact</a>
         </div>
-        <a href="#contact" class="px-7 py-2.5 rounded-full bg-white text-background font-bold text-sm hover:bg-primary transition-all">
-          Connect
-        </a>
+        <div class="flex items-center gap-4">
+          <a href="#contact" class="px-7 py-2.5 rounded-full bg-white text-background font-bold text-sm hover:bg-primary transition-all">
+            Connect
+          </a>
+          <button id="menuToggle" class="md-hidden flex flex-col justify-center items-center gap-1.5 w-10 h-10" aria-label="Toggle menu">
+            <span class="menu-bar"></span>
+            <span class="menu-bar"></span>
+            <span class="menu-bar"></span>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="mobile-menu-hidden md-hidden border-t border-white-5">
+        <div class="px-8 py-6 flex flex-col gap-6">
+          <a href="#home" class="mobile-nav-link" onclick="closeMobileMenu()">Home</a>
+          <a href="#work" class="mobile-nav-link" onclick="closeMobileMenu()">Work</a>
+          <a href="#about" class="mobile-nav-link" onclick="closeMobileMenu()">About</a>
+          <a href="#contact" class="mobile-nav-link" onclick="closeMobileMenu()">Contact</a>
+        </div>
       </div>
     </nav>
 
